@@ -208,8 +208,13 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -227,8 +232,15 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (value === null) {
+    return def;
+  }
+  const num = Number(value);
+  if (Number.isNaN(num)) {
+    return def;
+  }
+  return num;
 }
 
 /**
@@ -242,8 +254,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -259,8 +271,22 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0) {
+    return 0;
+  }
+  if (index === 1) {
+    return 1;
+  }
+  let a = 0;
+  let b = 1;
+  let next = a + b;
+  for (let i = 2; i < index; i += 1) {
+    a = b;
+    b = next;
+    next = a + b;
+  }
+  return next;
 }
 
 /**
@@ -274,8 +300,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let a = 0;
+  for (let i = 0; i <= n; i += 1) {
+    a += i;
+  }
+  return a;
 }
 
 /**
@@ -289,8 +319,15 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let a = 0;
+  const toString = String(num);
+  const toStringArray = toString.split('');
+  toStringArray.forEach((mass) => {
+    const nume = Number(mass);
+    a += nume;
+  });
+  return a;
 }
 
 /**
@@ -304,8 +341,15 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  let power = 0;
+  for (let i = 0; i <= num; i += 1) {
+    power = i;
+    if (2 ** power === num) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
